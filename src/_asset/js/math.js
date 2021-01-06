@@ -2,6 +2,35 @@ let numberOfDigits = 1;
 const getRandomNumber = (m = 1) => ~~(Math.random() * Math.pow(10, numberOfDigits) * m);
 let multiplier = 3;
 
+const operationList = [
+  'add',
+  'substract',
+  'multiply',
+  'divide',
+]
+
+let currentOperation = operationList[0]
+const addNumbersElement = document.querySelector('.add-numbers')
+
+operationList.forEach(label => {
+  const radioElement = document.createElement('input')
+  radioElement.type = 'radio'
+  radioElement.name = 'dar nu am vrut sa fac asta'
+  radioElement.value = label
+  radioElement.setAttribute('id', label)
+
+  const labelElement = document.createElement('label')
+  labelElement.setAttribute('for', label)
+  labelElement.textContent = label
+
+  addNumbersElement.appendChild(radioElement)
+  addNumbersElement.appendChild(labelElement)
+})
+
+
+const subTitle = document.querySelector('h2')
+subTitle.textContent = 'orice de aici'
+
 const addNumbersContainer = document.querySelector(".add-numbers");
 const length = 25;
 
@@ -27,7 +56,8 @@ Array.from({ length }).forEach(() => {
     .map((n, k) => `<span style="color: #${colorList[k]}">${n}</span>`)
     .reverse()
     .join('')
-  row.innerHTML = `${getColoredText(firstNumber)} <span style="color: #cc1313">&times;</span> ${getColoredText(secondNumber)} <span style="color: #cc1313">=</span> `;
+  row.innerHTML = `${getColoredText(firstNumber)} <span style="color: #cc1313">+</span> ${getColoredText(secondNumber)} <span style="color: #cc1313">=</span> `;
+  // row.innerHTML = `${getColoredText(firstNumber)} <span style="color: #cc1313">&times;</span> ${getColoredText(secondNumber)} <span style="color: #cc1313">=</span> `;
 
   // add an input to write the solution in
   const input = document.createElement("input");
